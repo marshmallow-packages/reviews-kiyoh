@@ -1,11 +1,12 @@
-# Laravel Kiyoh Reviews
 [![marshmallow-transparent-logo](https://cdn.marshmallow-office.com/media/images/logo/marshmallow.transparent.red.png)](https://marshmallow.dev)
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/marshmallow/reviews/kiyoh.svg)](https://packagist.org/packages/marshmallow/reviews/kiyoh)
-[![Total Downloads](https://img.shields.io/packagist/dt/marshmallow/reviews/kiyoh.svg)](https://packagist.org/packages/marshmallow/reviews/kiyoh)
-[![License](https://img.shields.io/packagist/l/marshmallow/reviews/kiyoh.svg)](https://gitlab.com/marshmallowdev)
-[![Stars](https://img.shields.io/badge/dynamic/json.svg?label=stars&url=https://gitlab.com/api/v4/projects/18898819&query=$.star_count&colorB=yellow)](https://gitlab.com/marshmallowdev)
-[![Forks](https://img.shields.io/badge/dynamic/json.svg?label=forks&url=https://gitlab.com/api/v4/projects/18898819&query=$.forks_count&colorB=brightgreen)](https://gitlab.com/marshmallowdev)
+# Laravel Kiyoh Reviews
+
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/marshmallow/reviews-kiyoh.svg)](https://gitlab.com/marshmallow-packages/reviews/kiyoh)
+[![Total Downloads](https://img.shields.io/packagist/dt/marshmallow/reviews-kiyoh.svg)](https://gitlab.com/marshmallow-packages/reviews/kiyoh)
+[![License](https://img.shields.io/packagist/l/marshmallow/reviews-kiyoh.svg)](https://gitlab.com/marshmallow-packages/reviews/kiyoh)
+[![Stars](https://img.shields.io/badge/dynamic/json.svg?label=stars&url=https://gitlab.com/api/v4/projects/18898819&query=$.star_count&colorB=yellow)](https://gitlab.com/marshmallow-packages/reviews/kiyoh)
+[![Forks](https://img.shields.io/badge/dynamic/json.svg?label=forks&url=https://gitlab.com/api/v4/projects/18898819&query=$.forks_count&colorB=brightgreen)](https://gitlab.com/marshmallow-packages/reviews/kiyoh)
 
 
 ## Setup
