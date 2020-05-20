@@ -1,0 +1,1 @@
+View component Ping:<x-example-pong />

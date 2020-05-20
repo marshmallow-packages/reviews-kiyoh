@@ -1,0 +1,37 @@
+{
+    "name": "marshmallow/reviews-kiyoh",
+    "description": "Connect your Kiyoh to your Laravel application",
+    "keywords": ["marshmallow", "laravel", "Kiyoh", "kiyoh", "laravel kiyoh"],
+    "homepage": "https://github.com/Marshmallow-Development/",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Stef",
+            "email": "stef@marshmallow.dev",
+            "homepage": "https://marshmallow.dev",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "stef@marshmallow.dev"
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.4"
+    },
+    "autoload": {
+        "psr-4": {"Marshmallow\\Reviews\\Kiyoh\\": "src"}
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Marshmallow\\Reviews\\Kiyoh\\ServiceProvider"
+            ],
+            "aliases": {
+                "Kiyoh": "Marshmallow\\Reviews\\Kiyoh\\Facades\\Kiyoh",
+                "KiyohInvite": "Marshmallow\\Reviews\\Kiyoh\\Facades\\KiyohInvite"
+            }
+        }
+    }
+}
