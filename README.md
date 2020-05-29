@@ -33,6 +33,8 @@ try {
                 ->refCode('Order: #1001')
                 ->city('Alphen aan den Rijn')
 
+                ->delayIgnoreWeekend(3)
+
                 /**
                  * Always end with invite()
                  */
@@ -54,16 +56,27 @@ Using feed information is very easy. Use the `Kiyoh` facade to access feed data.
 ```php
 use Marshmallow\Reviews\Kiyoh\Facades\Kiyoh;
 
-Kiyoh::average();
-Kiyoh::dontFail()->average();
+Kiyoh::feed()->average()
+Kiyoh::dontFail()->feed()->average();
 ```
 
 ### Available methods
- - Kiyoh::average()
- - Kiyoh::count()
- - Kiyoh::average12months()
- - Kiyoh::count12months()
- - Kiyoh::recommendation()
+ - Kiyoh::feed()->average()
+ - Kiyoh::feed()->count()
+ - Kiyoh::feed()->average12months()
+ - Kiyoh::feed()->count12months()
+ - Kiyoh::feed()->recommendation()
+ 
+ - Kiyoh::feed()->getAttribute('average')
+
+## Store the reviews in your own database
+If you wish to get all the reviews and store them in you own database or do whatever with it, you can get them with the methods below:
+```php
+$reviews = Kiyoh::withoutCache()->feed();
+foreach ($reviews as $review) {
+    // Do your own magic here
+}
+```
 
 - - -
 
@@ -72,3 +85,6 @@ Copyright (c) 2020 marshmallow.
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+
+## Tests during development
+`php artisan test packages/marshmallow/reviews/kiyoh`

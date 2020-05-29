@@ -18,7 +18,8 @@
     },
     "minimum-stability": "dev",
     "require": {
-        "php": "^7.4"
+        "php": "^7.4",
+        "marshmallow/helpers": "^1.0"
     },
     "autoload": {
         "psr-4": {"Marshmallow\\Reviews\\Kiyoh\\": "src"}

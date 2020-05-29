@@ -1,7 +1,7 @@
 <?php
 
 return [
-    
+
     /**
      * Invites
      */
@@ -9,14 +9,14 @@ return [
     'location_id' => '',
     'language' => 'nl',
     'delay' => 3,
-    'invite_path' => 'https://kiyoh.com/v1/invite/external',
-    
+    'invite_path' => 'https://www.klantenvertellen.nl/v1/invite/external',
+
     /**
      * XML feed
      */
     'feed_hash' => '',
     'cache_feed_in_seconds' => 3600, // Default is 1 hour
-    'xml_path' => 'https://www.kiyoh.com/v1/review/feed.xml',
+    'review_path' => 'https://www.klantenvertellen.nl/v1/publication/review/external',
     'cache_name' => 'kiyoh_reviews_object',
-    
+
 ];
