@@ -68,7 +68,7 @@ class KiyohInvite
     {
         $date = Date::addDaysWithoutWeekend(
             $start = Carbon::now(),
-            $delay,
+            $delay
         );
 
         return $this->delay(
