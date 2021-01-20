@@ -8,7 +8,6 @@
 [![Stars](https://img.shields.io/badge/dynamic/json.svg?label=stars&url=https://gitlab.com/api/v4/projects/18898819&query=$.star_count&colorB=yellow)](https://gitlab.com/marshmallow-packages/reviews/kiyoh)
 [![Forks](https://img.shields.io/badge/dynamic/json.svg?label=forks&url=https://gitlab.com/api/v4/projects/18898819&query=$.forks_count&colorB=brightgreen)](https://gitlab.com/marshmallow-packages/reviews/kiyoh)
 
-
 ## Setup
 To start using Kiyoh you need to publish the config and update the config accordingly. You need to add `hash`, `location_id` and `feed_hash` to `config/kiyoh.php`.
 ```bash
