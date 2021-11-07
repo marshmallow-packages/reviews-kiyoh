@@ -4,7 +4,6 @@ namespace Marshmallow\Reviews\Kiyoh\Collections;
 
 use Illuminate\Support\Collection;
 use Marshmallow\Reviews\Kiyoh\Models\KiyohReview;
-use Marshmallow\Reviews\Kiyoh\Http\Resources\KiyohFeedResource;
 
 class ReviewCollection extends Collection
 {
@@ -14,8 +13,10 @@ class ReviewCollection extends Collection
     public function __construct($reponse_string)
     {
         $this->data = json_decode($reponse_string, true);
-        foreach ($this->data['reviews'] as $review) {
-            $this->items[] = new KiyohReview($review);
+        if (array_key_exists('review', $this->data)) {
+            foreach ($this->data['reviews'] as $review) {
+                $this->items[] = new KiyohReview($review);
+            }
         }
     }
 
