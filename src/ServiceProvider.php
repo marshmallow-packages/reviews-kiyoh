@@ -2,9 +2,9 @@
 
 /**
  * ServiceProvider for our Kiyoh Package
- * 
+ *
  * PHP version 7.4
- * 
+ *
  * @category Reviews
  * @package  Kiyoh
  * @author   Stef van Esch <stef@marshmallow.dev>
@@ -18,7 +18,7 @@ use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
 /**
  * ServiceProvider for our Kiyoh Package
- * 
+ *
  * @category Reviews
  * @package  Kiyoh
  * @author   Stef van Esch <stef@marshmallow.dev>
@@ -35,7 +35,8 @@ class ServiceProvider extends BaseServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../config/kiyoh.php', 'kiyoh'
+            __DIR__ . '/../config/kiyoh.php',
+            'kiyoh'
         );
     }
 
@@ -48,7 +49,7 @@ class ServiceProvider extends BaseServiceProvider
     {
         $this->publishes(
             [
-                __DIR__.'/../config/kiyoh.php' => config_path('kiyoh.php'),
+                __DIR__ . '/../config/kiyoh.php' => config_path('kiyoh.php'),
             ]
         );
     }

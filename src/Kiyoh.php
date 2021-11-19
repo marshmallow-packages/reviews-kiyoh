@@ -5,11 +5,9 @@ namespace Marshmallow\Reviews\Kiyoh;
 use Exception;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Cache;
-use Marshmallow\Reviews\Kiyoh\KiyohInvite;
 use Marshmallow\Reviews\Kiyoh\Exceptions\KiyohException;
 use Marshmallow\Reviews\Kiyoh\Collections\ReviewCollection;
 use Marshmallow\Reviews\Kiyoh\Exceptions\KiyohInviteException;
-use Marshmallow\Reviews\Kiyoh\Http\Resources\KiyohFeedResource;
 
 class Kiyoh
 {
@@ -51,11 +49,11 @@ class Kiyoh
             $cache_in_seconds = env('KIYOH_CACHE_FEED_IN_SECONDS', config('kiyoh.cache_feed_in_seconds'));
             if ($this->use_cache === true && $cache_in_seconds) {
                 Cache::store(env('CACHE_DRIVER'))
-                        ->put(
-                            config('kiyoh.cache_name'),
-                            $response->body(),
-                            $cache_in_seconds
-                        );
+                    ->put(
+                        config('kiyoh.cache_name'),
+                        $response->body(),
+                        $cache_in_seconds
+                    );
             }
 
             return new ReviewCollection(

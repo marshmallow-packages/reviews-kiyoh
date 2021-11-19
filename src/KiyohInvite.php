@@ -151,8 +151,8 @@ class KiyohInvite
         return $this->supplier;
     }
 
-	public function invite()
-	{
+    public function invite()
+    {
         $data = [
             'location_id' => env('KIYOH_LOCATION_ID', config('kiyoh.location_id')),
             'invite_email' => $this->getEmail(),
@@ -166,14 +166,14 @@ class KiyohInvite
             'variable' => $this->getVariable(),
         ];
 
-		$response = Http::withHeaders([
-                'X-Publication-Api-Token' => env('KIYOH_HASH', config('kiyoh.hash')),
-            ])->post(config('kiyoh.invite_path'), $data);
+        $response = Http::withHeaders([
+            'X-Publication-Api-Token' => env('KIYOH_HASH', config('kiyoh.hash')),
+        ])->post(config('kiyoh.invite_path'), $data);
 
-		if (!$response->successful()) {
-			throw new KiyohInviteException($response->json());
-		}
+        if (!$response->successful()) {
+            throw new KiyohInviteException($response->json());
+        }
 
         return new KiyohInviteResource($response);
-	}
+    }
 }
