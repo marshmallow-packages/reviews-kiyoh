@@ -92,6 +92,10 @@ foreach ($reviews as $review) {
 }
 ```
 
+## Products
+
+php artisan marshmallow:resource KiyohProduct Reviews\\Kiyoh
+
 ---
 
 Copyright (c) 2020 marshmallow.

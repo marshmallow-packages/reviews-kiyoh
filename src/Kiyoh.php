@@ -14,6 +14,11 @@ class Kiyoh
     protected $use_cache = true;
     protected $dont_fail = false;
 
+    public static $kiyohProductModel = \Marshmallow\Reviews\Kiyoh\Models\KiyohProduct::class;
+    public static $kiyohProductResource = \Marshmallow\Reviews\Kiyoh\Nova\KiyohProduct::class;
+    public static $productModel = \Marshmallow\Product\Models\Product::class;
+    public static $productResource = \Marshmallow\Product\Nova\Product::class;
+
     public function dontFail()
     {
         $this->dont_fail = true;

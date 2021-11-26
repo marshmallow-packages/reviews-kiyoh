@@ -15,6 +15,7 @@
 namespace Marshmallow\Reviews\Kiyoh;
 
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
+use Marshmallow\Reviews\Kiyoh\Console\Commands\StoreReviewsInDatabase;
 
 /**
  * ServiceProvider for our Kiyoh Package
@@ -38,6 +39,10 @@ class ServiceProvider extends BaseServiceProvider
             __DIR__ . '/../config/kiyoh.php',
             'kiyoh'
         );
+
+        $this->commands([
+            StoreReviewsInDatabase::class,
+        ]);
     }
 
     /**
@@ -47,10 +52,10 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function boot()
     {
-        $this->publishes(
-            [
-                __DIR__ . '/../config/kiyoh.php' => config_path('kiyoh.php'),
-            ]
-        );
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+
+        $this->publishes([
+            __DIR__ . '/../config/kiyoh.php' => config_path('kiyoh.php'),
+        ]);
     }
 }
