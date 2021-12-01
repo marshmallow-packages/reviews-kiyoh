@@ -2,9 +2,9 @@
 
 /**
  * ServiceProvider for our Kiyoh Package
- * 
+ *
  * PHP version 7.4
- * 
+ *
  * @category Reviews
  * @package  Kiyoh
  * @author   Stef van Esch <stef@marshmallow.dev>
@@ -15,10 +15,11 @@
 namespace Marshmallow\Reviews\Kiyoh;
 
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
+use Marshmallow\Reviews\Kiyoh\Console\Commands\StoreReviewsInDatabase;
 
 /**
  * ServiceProvider for our Kiyoh Package
- * 
+ *
  * @category Reviews
  * @package  Kiyoh
  * @author   Stef van Esch <stef@marshmallow.dev>
@@ -35,8 +36,13 @@ class ServiceProvider extends BaseServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../config/kiyoh.php', 'kiyoh'
+            __DIR__ . '/../config/kiyoh.php',
+            'kiyoh'
         );
+
+        $this->commands([
+            StoreReviewsInDatabase::class,
+        ]);
     }
 
     /**
@@ -46,10 +52,10 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function boot()
     {
-        $this->publishes(
-            [
-                __DIR__.'/../config/kiyoh.php' => config_path('kiyoh.php'),
-            ]
-        );
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+
+        $this->publishes([
+            __DIR__ . '/../config/kiyoh.php' => config_path('kiyoh.php'),
+        ]);
     }
 }

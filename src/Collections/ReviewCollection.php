@@ -13,7 +13,7 @@ class ReviewCollection extends Collection
     public function __construct($reponse_string)
     {
         $this->data = json_decode($reponse_string, true);
-        if (array_key_exists('review', $this->data)) {
+        if (array_key_exists('reviews', $this->data)) {
             foreach ($this->data['reviews'] as $review) {
                 $this->items[] = new KiyohReview($review);
             }
