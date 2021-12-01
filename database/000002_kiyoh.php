@@ -13,20 +13,20 @@ return new class extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('kiyoh_reviews')) {
-            Schema::create('kiyoh_reviews', function (Blueprint $table) {
-                $table->bigIncrements('id');
-                id
-                dateSince
-                updatedSince
-                productCode
-                productName
-                image_url
-                source_url
-                active
-                $table->timestamps();
-            });
-        }
+        // if (!Schema::hasTable('kiyoh_reviews')) {
+        //     Schema::create('kiyoh_reviews', function (Blueprint $table) {
+        //         $table->bigIncrements('id');
+        //         id
+        //         dateSince
+        //         updatedSince
+        //         productCode
+        //         productName
+        //         image_url
+        //         source_url
+        //         active
+        //         $table->timestamps();
+        //     });
+        // }
     }
 
 
