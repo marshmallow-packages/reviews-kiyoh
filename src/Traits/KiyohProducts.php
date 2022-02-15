@@ -14,7 +14,7 @@ trait KiyohProducts
 
     public function addToKiyoh()
     {
-        KiyohProduct::create($this);
+        return KiyohProduct::create($this);
     }
 
     public function existsInKiyoh()

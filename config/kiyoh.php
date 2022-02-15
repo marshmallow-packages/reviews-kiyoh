@@ -23,6 +23,7 @@ return [
      * Products
      */
     'product_path' => 'https://www.kiyoh.com/v1/location/product/external',
+    'product_review_path' => 'https://www.klantenvertellen.nl/v1/publication/product/review/external',
     'publication_api_token' => env('KIYOH_PUBLICATION_API_TOKEN', null),
 
     /**

@@ -3,6 +3,7 @@
 namespace Marshmallow\Reviews\Kiyoh;
 
 use Carbon\Carbon;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Http;
 use Marshmallow\HelperFunctions\Facades\Date;
 use Marshmallow\Reviews\Kiyoh\Exceptions\KiyohException;
@@ -17,6 +18,7 @@ class KiyohInvite
     protected $first_name;
     protected $last_name;
     protected $ref_code;
+    protected array $product_code = [];
     protected $city;
     protected $variable;
     protected $supplier;
@@ -118,6 +120,21 @@ class KiyohInvite
         return $this->ref_code;
     }
 
+    public function productCode($product_code)
+    {
+        $this->product_code[] = $product_code;
+        return $this;
+    }
+
+    public function getProductCode()
+    {
+        if (empty($this->product_code)) {
+            return null;
+        }
+
+        return $this->product_code;
+    }
+
     public function city($city)
     {
         $this->city = $city;
@@ -153,7 +170,7 @@ class KiyohInvite
 
     public function invite()
     {
-        $data = [
+        $data = Arr::whereNotNull([
             'location_id' => env('KIYOH_LOCATION_ID', config('kiyoh.location_id')),
             'invite_email' => $this->getEmail(),
             'delay' => $this->getDelay(),
@@ -162,9 +179,10 @@ class KiyohInvite
             'last_name' => $this->getLastName(),
             'language' => $this->getLanguage(),
             'ref_code' => $this->getRefCode(),
+            'product_code' => $this->getProductCode(),
             'city' => $this->getCity(),
             'variable' => $this->getVariable(),
-        ];
+        ]);
 
         $response = Http::withHeaders([
             'X-Publication-Api-Token' => env('KIYOH_HASH', config('kiyoh.hash')),
