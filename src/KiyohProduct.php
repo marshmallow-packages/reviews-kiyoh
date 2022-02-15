@@ -14,14 +14,21 @@ class KiyohProduct
             'X-Publication-Api-Token' => config('kiyoh.publication_api_token'),
         ])->get(config('kiyoh.product_path') . '?locationId=' . config('kiyoh.location_id'));
 
-        dd($response->json());
+        $data = $response->json();
+        foreach ($data as $kiyoh_product) {
+            if ($product->gtin == $kiyoh_product['product_code']) {
+                return $kiyoh_product;
+            }
+        }
+
+        return null;
     }
 
     public function create(Model $product)
     {
         $product_data = [
             'location_id' => config('kiyoh.location_id'),
-            'product_code' => 'TEST_' . $product->getKiyohProductCode(),
+            'product_code' => $product->getKiyohProductCode(),
             'product_name' => $product->getKiyohProductName(),
             'image_url' => $product->getKiyohProductImageUrl(),
             'source_url' => $product->getKiyohProductSourceUrl(),
@@ -32,23 +39,11 @@ class KiyohProduct
 
         $product_data = array_filter($product_data);
 
-        // $response = Http::withHeaders([
-        //     'X-Publication-Api-Token' => config('kiyoh.publication_api_token'),
-        // ])->put(config('kiyoh.product_path'), $product_data);
+        $response = Http::withHeaders([
+            'X-Publication-Api-Token' => config('kiyoh.publication_api_token'),
+        ])->put(config('kiyoh.product_path'), $product_data);
 
-
-        $response_data = [
-            "id" => 19,
-            "location_id" => "1018015",
-            "product_code" => "0681495007813",
-            "product_name" => "Kiyoh e-reader - Zwart",
-            "image_url" => "https://www.voorbeeld.com/imgbase/imagebase3/thumb/FC/920000011751694
-            7.jpg",
-            "source_url" => "https://www.voorbeeld.com/nl/p/kiyoh-e-
-            readerzwart/9200000117516947/",
-            "active" => true,
-            "cluster_id" => 1000007
-        ];
+        $response_data = $response->json();
 
         Kiyoh::$kiyohProductModel::updateOrCreate([
             'product_id' => $product->id,
