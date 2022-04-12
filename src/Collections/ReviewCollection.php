@@ -25,7 +25,7 @@ class ReviewCollection extends Collection
         return floatval($this->getAttribute('averageRating'));
     }
 
-    public function count()
+    public function count(): int
     {
         return intval($this->getAttribute('numberReviews'));
     }
