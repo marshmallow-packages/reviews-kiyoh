@@ -4,6 +4,7 @@ namespace Marshmallow\Reviews\Kiyoh\Console\Commands;
 
 use Illuminate\Console\Command;
 use Marshmallow\Reviews\Kiyoh\Facades\Kiyoh;
+use Marshmallow\Reviews\Kiyoh\Models\KiyohReview;
 
 class StoreReviewsInDatabase extends Command
 {
@@ -28,9 +29,8 @@ class StoreReviewsInDatabase extends Command
      */
     public function handle()
     {
-        $reviews = Kiyoh::withoutCache()->feed();
-        foreach ($reviews as $review) {
-            // Do your own magic here
-        }
+        Kiyoh::withoutCache()->feed()->each(function ($review) {
+            KiyohReview::createFromFeed($review);
+        });
     }
 }
