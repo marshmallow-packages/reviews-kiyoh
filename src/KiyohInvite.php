@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Http;
 use Marshmallow\HelperFunctions\Facades\Date;
+use Marshmallow\Reviews\Kiyoh\Jobs\PostKiyohData;
 use Marshmallow\Reviews\Kiyoh\Exceptions\KiyohException;
 use Marshmallow\Reviews\Kiyoh\Exceptions\KiyohInviteException;
 use Marshmallow\Reviews\Kiyoh\Http\Resources\KiyohInviteResource;
@@ -168,7 +169,7 @@ class KiyohInvite
         return $this->supplier;
     }
 
-    public function invite()
+    public function invite($dispatch = false)
     {
         $data = Arr::whereNotNull([
             'location_id' => env('KIYOH_LOCATION_ID', config('kiyoh.location_id')),
@@ -184,6 +185,15 @@ class KiyohInvite
             'variable' => $this->getVariable(),
         ]);
 
+        if ($dispatch) {
+            PostKiyohData::dispatch($data);
+        } else {
+            return $this->postData($data);
+        }
+    }
+
+    public function postData($data)
+    {
         $response = Http::withHeaders([
             'X-Publication-Api-Token' => env('KIYOH_HASH', config('kiyoh.hash')),
         ])->post(config('kiyoh.invite_path'), $data);
