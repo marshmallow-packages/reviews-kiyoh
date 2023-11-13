@@ -133,7 +133,7 @@ class KiyohInvite
             return null;
         }
 
-        return $this->product_code;
+        return array_unique($this->product_code);
     }
 
     public function city($city)
