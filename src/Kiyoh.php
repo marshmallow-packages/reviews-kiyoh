@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Cache;
 use Marshmallow\Reviews\Kiyoh\Exceptions\KiyohException;
 use Marshmallow\Reviews\Kiyoh\Collections\ReviewCollection;
+use Marshmallow\Reviews\Kiyoh\Exceptions\KiyohApiException;
 use Marshmallow\Reviews\Kiyoh\Exceptions\KiyohInviteException;
 
 class Kiyoh
@@ -48,9 +49,11 @@ class Kiyoh
                 ]
             )->get($this->reviewApiEndpoint());
 
+
             if (!$response->successful()) {
-                throw new KiyohInviteException($response->json());
+                throw new KiyohApiException($response->body());
             }
+
 
             $cache_in_seconds = env('KIYOH_CACHE_FEED_IN_SECONDS', config('kiyoh.cache_feed_in_seconds'));
             if ($this->use_cache === true && $cache_in_seconds) {
@@ -92,7 +95,7 @@ class Kiyoh
             )->get($this->productReviewApiEndpoint($product_code));
 
             if (!$response->successful()) {
-                throw new KiyohInviteException($response->json());
+                throw new KiyohApiException($response->body());
             }
 
             $cache_in_seconds = env('KIYOH_CACHE_FEED_IN_SECONDS', config('kiyoh.cache_feed_in_seconds'));
